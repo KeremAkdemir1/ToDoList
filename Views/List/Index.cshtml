@@ -1,0 +1,68 @@
+﻿@model List<PersonalToDoList.Data.Entities.List>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 style="text-align:center">Your To Do List</h1>
+<style>
+
+    .FlexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    overflow: scroll;
+    flex-direction: row;
+}
+
+.FlexContainer div {
+    margin: 5px;
+        position: relative;
+  text-align: center;
+
+}
+.title{
+        position: absolute;
+        text-align:center;
+        margin-top:15%;
+        margin-left:35%;
+}
+.text1{
+    position: absolute;
+    margin-top:30%;
+    margin-left:40%;
+}
+.text2{
+    position: absolute;
+    margin-top:40%;
+    margin-left:40%;
+}
+a{
+    position: absolute;
+    margin-top:55%;
+    margin-left:40%;
+}
+</style>
+
+<section class='FlexContainer'>
+    @foreach (var x in Model)
+    {
+        <div class="">
+            <h2 class="title">@x.Category</h2>
+            <h5 class="text1">@x.ToDo</h5>
+            <h5 class="text2">@x.Time</h5>
+            <a class="btn btn-success" asp-action="Delete" asp-route-id="@x.ListId">Tamamlandi</a>
+            <img src="~/images/todoprojects.png">
+
+        </div>
+    }
+     <div class="">
+            <a class="btn btn-primary" asp-action="Create" >Yeni Liste Olustur</a>
+            <img src="~/images/todoprojects.png">
+
+        </div>
+</section>
